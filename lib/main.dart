@@ -4,6 +4,7 @@ import 'package:metaplayer/playlist.dart';
 import 'package:metaplayer/theme.dart';
 import 'package:metaplayer/track-lists.dart';
 
+import 'playback-controls.dart';
 import 'track.dart';
 
 void main() {
@@ -19,14 +20,20 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  _MainScreenState() {}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "MetaPlayer",
       theme: theme,
       home: Scaffold(
+        drawer: PlaylistList(),
         appBar: AppBar(
           title: Text("MetaPlayer ¯\\_(-_-)_/¯"),
+        ),
+        bottomNavigationBar: BottomAppBar(
+          child: PlaybackControls(),
         ),
         body: Builder(
           builder: (context) => Container(child: TrackList()),

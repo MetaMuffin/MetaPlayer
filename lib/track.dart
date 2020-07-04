@@ -10,17 +10,22 @@ class Track {
 
   Track(this.title, this.artist, this.url);
 
-  Widget buildListWidget(BuildContext context) {
-    return ListTile(
-      title: Text("$title by $artist"),
-      trailing: IconButton(
-        icon: Icon(Icons.play_arrow),
-        onPressed: () async {
-          if (audioPlayer.state == AudioPlayerState.PLAYING)
-            await audioPlayer.stop();
-          await audioPlayer.play(url);
-        },
-      ),
+  DataRow buildListWidget(BuildContext context) {
+    return DataRow(
+      cells: [
+        DataCell(Text("$title")),
+        DataCell(Text("$artist")),
+        DataCell(
+          IconButton(
+            icon: Icon(Icons.play_arrow),
+            onPressed: () async {
+              if (audioPlayer.state == AudioPlayerState.PLAYING)
+                await audioPlayer.stop();
+              await audioPlayer.play(url);
+            },
+          ),
+        )
+      ],
     );
   }
 }

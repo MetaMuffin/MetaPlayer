@@ -16,3 +16,6 @@ void addPlaylists(List<Playlist> pl) {
 }
 
 AudioPlayer audioPlayer = AudioPlayer();
+
+typedef void VoidCallback();
+VoidCallback playlistUpdate;
